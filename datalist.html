@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block title %} All Data {% endblock title %} {% block body %}
+
+<div class="container my-3">
+    <h2>All Employee Record</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Employee ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Position</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{employee.employee_id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.age}}</td>
+                <td>{{employee.position}}</td>
+                <td>
+                    <a href="/update/{{employee.employee_id}}" type="button" class="btn btn-outline-info btn-sm mx-1">Edit</button>
+                  <a href="/delete/{{employee.employee_id}}" type="button" class="btn btn-outline-danger btn-sm mx-1">Delete</button>
+                </td>
+            </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+    </div>
+   {% endblock body %}
